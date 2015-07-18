@@ -1,0 +1,20 @@
+{
+    "name": "alanablett/twig-faker",
+    "description": "Integration of PHP faker library with the twig templating system.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alan Ablett",
+            "email": "alan@alanablett.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "~1.0",
+        "fzaninotto/faker": "~1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ablett\\TwigFaker\\": "src/"
+        }
+    }
+}
