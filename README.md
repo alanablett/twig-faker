@@ -31,7 +31,7 @@ Pull this package in through Composer.
 
 ```
 "require": {
-    "alanablett/twig-faker": "~1.0"
+    "alanablett/twig-faker": "~1.1"
 }
 ```
 
@@ -88,7 +88,7 @@ Pull this package in through Composer by adding it to the `sculpin.json` file.
 
 ```
 "require": {
-    "alanablett/twig-faker": "~1.0"
+    "alanablett/twig-faker": "~1.1"
 }
 ```
 
@@ -105,5 +105,38 @@ services:
 ```
 
 Follow the further steps above to create new factories and use them in your templates.
+
+## Other Features
+
+### Caching
+
+As of version 1.1 you can now cache your fake data in order to use later on down the page. This can be particularly useful when your markup must exist in different areas, but must use the same data. For example I have a hero block factory defined as follows
+
+```
+<?php
+
+return [
+    'title' => $faker->sentence(),
+    'background' => $faker->imageUrl(1700, 600)
+];
+```
+
+Now in my markup I would like to use the same data for two different calls to the fake method, so I simply pass in a key as the third argument to ensure the data is the same, in this case `main-heroes`
+
+```
+{% for hero in fake('heroes', 4, 'main-heroes') %}
+    <div class="hero__cell" data-background-url="{{ hero.background }}">
+        <h2>{{ hero.title }}</h2>
+    </div>
+{% endfor %}
+...
+...
+...
+{% for hero in fake('heroes', 4, 'main-heroes') %}
+    <div class="hero__button">
+        <button>{{ hero.title }}</button>
+    </div>
+{% endfor %}
+```
 
 [faker]: https://github.com/fzaninotto/Faker
