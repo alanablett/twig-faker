@@ -40,6 +40,7 @@ class TwigFakerExtension extends \Twig_Extension {
      */
     public function fakerData($type, $count = 1, $cache_key = null)
     {
+        $this->fake_data = [];
         $this->getFromCache($type, $count, $cache_key);
         if ($this->fake_data) return $this->fake_data;
 
@@ -89,7 +90,6 @@ class TwigFakerExtension extends \Twig_Extension {
     private function createNewFakeData($type, $count)
     {
         $faker = Factory::create();
-        $this->fake_data = [];
 
         for ($i = 0; $i < $count; $i++)
         {
