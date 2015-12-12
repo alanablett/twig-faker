@@ -40,44 +40,12 @@ class TwigFakerExtension extends \Twig_Extension {
      */
     public function fakerData($type, $count = 1, $cache_key = null)
     {
-        $this->getFromCache($type, $count, $cache_key);
-        if ($this->fake_data) return $this->fake_data;
+        if (isset($this->cache[$cache_key])) return $this->cache[$cache_key];
 
         $this->createNewFakeData($type, $count);
         $this->cacheNewFakeData($cache_key);
 
         return $this->fake_data;
-    }
-
-    /**
-     * @param $type
-     * @param $count
-     * @param $cache_key
-     */
-    private function getFromCache($type, $count, $cache_key)
-    {
-        if ($cache_key)
-        {
-            $this->fake_data = $this->getCachedData($type, $count, $cache_key);
-        }
-    }
-
-    /**
-     * Try to get the data from the cache.
-     *
-     * @param $type
-     * @param $count
-     * @param $cache_key
-     * @return array|bool
-     */
-    private function getCachedData($type, $count, $cache_key)
-    {
-        if (isset($this->cache[$cache_key]))
-        {
-            return array_slice($this->cache[$cache_key], 0, $count);
-        }
-
-        return false;
     }
 
     /**
