@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/alanablett/twig-faker.svg?branch=master)](https://travis-ci.org/alanablett/twig-faker)
+[![Code Coverage](https://scrutinizer-ci.com/g/alanablett/twig-faker/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/alanablett/twig-faker/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/alanablett/twig-faker/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/alanablett/twig-faker/?branch=master)
+
 # TwigFaker
 
 An extension to add the [faker] library into twig templates, providing a fast efficient way to create dummy data within your templates. Here's a quick example:

@@ -6,6 +6,7 @@ use Faker\Factory;
 
 class TwigFakerExtension extends \Twig_Extension {
 
+    public static $factoriesPath = 'factories/';
     private $cache;
     private $fake_data;
 
@@ -40,7 +41,12 @@ class TwigFakerExtension extends \Twig_Extension {
      */
     public function fakerData($type, $count = 1, $cache_key = null)
     {
-        if (isset($this->cache[$cache_key])) return $this->cache[$cache_key];
+        if (isset($cache_key)) $cache_key = "{$type}-$cache_key";
+
+        if (isset($this->cache[$cache_key]))
+        {
+            return $this->cache[$cache_key];
+        }
 
         $this->createNewFakeData($type, $count);
         $this->cacheNewFakeData($cache_key);
@@ -52,7 +58,8 @@ class TwigFakerExtension extends \Twig_Extension {
      * Create the fake data.
      *
      * @param $type
-     * @param $count
+     * @param integer $count
+     * @throws InvalidFactoryException
      */
     private function createNewFakeData($type, $count)
     {
@@ -61,7 +68,13 @@ class TwigFakerExtension extends \Twig_Extension {
 
         for ($i = 0; $i < $count; $i++)
         {
-            $fake_item = include 'factories/' . $type . '.php';
+            if ( ! file_exists($this->fullFactoryPath($type)))
+            {
+                throw new InvalidFactoryException('does not exist');
+            }
+
+            $fake_item = include $this->fullFactoryPath($type);
+
             array_push($this->fake_data, $fake_item);
         }
     }
@@ -78,4 +91,17 @@ class TwigFakerExtension extends \Twig_Extension {
             $this->cache[$cache_key] = $this->fake_data;
         }
     }
+
+    /**
+     * Get the full factory path.
+     *
+     * @param $type
+     * @return string
+     */
+    private function fullFactoryPath($type)
+    {
+        return static::$factoriesPath . $type . '.php';
+    }
 }
+
+class InvalidFactoryException extends \Exception {}
