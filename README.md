@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/alanablett/twig-faker.svg?branch=master)](https://travis-ci.org/alanablett/twig-faker)
 [![Code Coverage](https://scrutinizer-ci.com/g/alanablett/twig-faker/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/alanablett/twig-faker/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/alanablett/twig-faker/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/alanablett/twig-faker/?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/alanablett/twig-faker/v/stable)](https://packagist.org/packages/alanablett/twig-faker) [![Total Downloads](https://poser.pugx.org/alanablett/twig-faker/downloads)](https://packagist.org/packages/alanablett/twig-faker) [![Latest Unstable Version](https://poser.pugx.org/alanablett/twig-faker/v/unstable)](https://packagist.org/packages/alanablett/twig-faker) [![License](https://poser.pugx.org/alanablett/twig-faker/license)](https://packagist.org/packages/alanablett/twig-faker)
+
 
 # TwigFaker
 
