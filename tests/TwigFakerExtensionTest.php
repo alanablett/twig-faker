@@ -36,11 +36,11 @@ class TwigFakerExtensionTest extends PHPUnit_Framework_TestCase
 
     /**
      * @test
+     *
+     * @expectedException Ablett\TwigFaker\InvalidFactoryException
      */
     public function it_throws_an_exception_when_an_invalid_factory_is_used()
     {
-        $this->expectException(InvalidFactoryException::class);
-
         $data = $this->twigFaker->fakerData('does-not-exist');
     }
 
